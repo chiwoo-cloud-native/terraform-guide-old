@@ -54,116 +54,45 @@ Terraform 프로젝트 레이아웃 및 구성이 복잡한 프로젝트를 위�
 - [Architecture Design Lab](./lab-103/practice/handson.md)
 
 
+## apple 프로젝트 구현
+- [apple](./lab-201/handson-201.md) 테라폼 프로젝트를 구현 합니다.  
+
+
+# Meta-Arguments 이해와 모듈화 
+
+Meta 아규먼트 설명 및 예시와 Meta 아규먼트를 통한 리소스 정의 
 ```
+- depends_on
+- count
+- for_each
+- provider
+- lifecycle
+- Constraints
 ```
- 
-
-Terraform State
-Terraform State 소개
-Purpose of State 목적
-실습 Terraform State 관리 - 로컬 / 특정위치 /리모트
-Terraform State Considerations - 고려사항
-복잡한 아키텍처 구성을 위한 테라폼 프로젝트 구성전략
-https://docs.aws.amazon.com/whitepapers/latest/best-practices-wordpress/images/image4.png
-재해 복원 대응
+- [Meta-Arguments Lab](./lab-202/practice/handson.md)
 
 
+## Terraform State 소개
+- 로컬 관리
+- 분할 관리
+- 리모트 관리 
 
+## Terraform 트러블 슈팅
+- 디버깅 
+  : TF_LOG 환경 변수를 통한 로그 레벨 설정 - TRACE, DEBUG, INFO, WARN, ERROR
+  : TF_LOG_PATH 환경 변수를 통한 로그파일 경로 설정
+- Variable validation - 정규표현식을 통한 입력 변수 한정 
+- refresh 무시
+- tfstate 복원 전략
+- Terraform Import
 
+<br>
 
-Working with Terraform
-Terraform Commands
-실습 Terraform Commands
-자동 실행
-refresh 무시
-
-Mutable vs Immutable Infrastructure
-LifeCycle Rules
-실습 Lifecycle Rules
-Datasources
-실습 Datasources
-
-Meta-Arguments
-depends_on
-count
-for_each
-provider
-lifecycle
-Version Constraints
-실습 Meta-Arguments
-
-
-Terraform with AWS
-Lab: Setup an AWS Account  & CLI
-AWS IAM with Terraform
-04:28
-I
-04:44
-Lab: IAM with Terraform
-00:00
-Introduction to AWS S3
-04:53
-S3 with Terraform
-04:27
-Lab: S3
-Introduction to DynamoDB
-
-
-Terraform with AWS
-
-Debugging
-TF_LOG 환경 변수를 통한 로그 레벨 설정
-TRACE, DEBUG, INFO, WARN, ERROR
-TF_LOG_PATH 환경 변수를 통한 로그파일 경로 설정
-정규표현식을 통한 입력 변수 제약 Using the error_message to validate variable value
-
-
-AWS 클라우드 디자인 실습
-고객 요구사항 시나리오 - 개발/운영 환경의 분리
-네이밍 정책 및 태깅속성
-
-VPC 구성
-
-
-
-
-
-
-Terraform Import
-실습 Terraform Import
-
-Terraform module
-실습: 모듈 생성
-
+## References  
+- [AWS Lambda & EventBridge | Schedule Start And Stop Of EC2 Instances Based On Tags](https://dheeraj3choudhary.com/aws-lambda-and-eventbridge-or-schedule-start-and-stop-of-ec2-instances-based-on-tags) 
+- [aws-samples](https://github.com/orgs/aws-samples/repositories) 
 
 고급
 
 	Learn in 20 min terraform state file & terraform Import existing Infrastructure
 	https://www.youtube.com/watch?v=3mTCc3xmlys
-
-
-AWS Lambda & EventBridge | Schedule Start And Stop Of EC2 Instances Based On Tags
-
-	https://dheeraj3choudhary.com/aws-lambda-and-eventbridge-or-schedule-start-and-stop-of-ec2-instances-based-on-tags
-
-
-# 참고자료
-https://github.com/aws-samples/aws-fargate-fast-autoscaler
-
-
-
-### Bastion 요구 사항
-
-클라우드 관리 목적으로 bastion ec2 를 하나만 생성 합니다.
-- 비용 절감을 위해 t3 micro 인스턴스로 생성 합니다. 
-- OS 는 ubuntu 20.
-- Bastion 을 접속하는 public IP 는 bastion 이 재-생성 되더라도 변경되어선 안됩니다.
-- 
-```
-
-```
-- 
-  : 
-
-  - 
-- bastion 을 접속하는 bastion 은 eip 가 변경되어선 안됨
