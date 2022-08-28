@@ -50,10 +50,12 @@ Terraform의 기초를 이해 합니다.
 ## Terraform 프로젝트
 Terraform 프로젝트 레이아웃 및 구성이 복잡한 프로젝트를 위한 테라폼 프로비저닝 전략을 소개 합니다.  
 - [Terraform Project](./lab-103/guide-103.md)
+- [Project Layout Lab](./lab-103/practice/handson-02.md)
 
 ## 아키텍처 설계
 - [diagrams.net](https://www.diagrams.net/) 을 통해 클라우드 아키텍처 다이어그램을 작성 합니다.  
 - [Architecture Design Lab](./lab-103/practice/handson.md)
+- [Project-Layout Lab](./lab-103/practice/handson-02.md)
 
 
 ## apple 프로젝트 구현

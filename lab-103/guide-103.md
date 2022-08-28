@@ -61,19 +61,7 @@ Terraform 에서 권고하는 프로젝트 레이아웃은 [Standard Module Stru
 - AWS 리소스는 VPC > ALB > EC2 순서대로 구성이 가능하며, 참조를 통해 원하는 값을 참조할 수 있습니다.    
 - 각 Workspace 단위로 프로비저닝 및 state 상태 파일을 관리하므로 대규모의 리소스를 한번에 관리하는 부담에서 자유롭고 프로비저닝 시간도 예측 가능합니다.  
 
-## 디렉토리 구조 Hands-On  
-
-![디렉토리 구조 Hands-On](https://docs.aws.amazon.com/whitepapers/latest/best-practices-wordpress/images/image4.png) 
-
 <br>
-
-위 AWS 클라우드 아키텍처를 Terraform 으로 관리하고자 합니다. 여기에 대응하는 프로젝트 레이아웃 구조를 정의 하세요.
-
-```
-
-```
-
-
 
 ## Convention over Configuration(CoC)
 프로젝트 레이아웃과 파일명을 보고 직관적으로 무엇을 위한 것인지 개발자가 쉽게 이해할 수 있도록 하는 암묵적인 규칙 입니다.  
