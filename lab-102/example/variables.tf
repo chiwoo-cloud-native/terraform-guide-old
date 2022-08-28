@@ -1,5 +1,5 @@
 variable "name" {
-  description = "OOO 리소스 이름 입니다"
+  description = "리소스 이름 입니다"
   type        = string
 }
 
@@ -13,7 +13,7 @@ variable "tags" {
 }
 
 variable "security_group_ids" {
-  description = "OOO 리소스가 참조하는 보안 그룹 목록 입니다."
+  description = "리소스가 참조하는 보안 그룹 목록 입니다."
   type        = list(string)
 }
 

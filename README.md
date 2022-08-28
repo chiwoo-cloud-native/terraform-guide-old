@@ -40,9 +40,9 @@ terraform-guide
 
 
 ## Terraform Basic
-
-[Terraform 기본](./lab-102/guide.md)
-
+Provider, Resource, Variable, Output 을 이해 합니다.
+[Terraform Basic](./lab-102/guide.md)
+[Terraform Basic Lab](./lab-102/practice/hanson.md)
 
 
 ## 대형 프로젝트의 프로비저닝 전략
