@@ -11,7 +11,7 @@
 - instance_type 은 t2.micro 입니다.
 - ami 이미지 아이디는 "ami-08f869ae259b6bc98" 입니다.
 - 태그 속성명으로 CreatedBy, Team, Owner 를 정의해야 하며, 적절한 값을 할당 하세요.
-- 관리 콘솔을 통해 Default VPC 와 subnet 을 정의 하세요.
+- 관리 콘솔을 통해 Default VPC 와 subnet 을 확인하여 원하는 subnet 에 EC2 를 배포(구성) 하세요.
 - ebs 최적화는 비활성화 하세요.
 - API 를 통한 종료방지 기능을 비활성화 하세요.
 

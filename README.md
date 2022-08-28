@@ -41,36 +41,22 @@ terraform-guide
 
 ## Terraform Basic
 Terraform의 기초를 이해 합니다.   
-- [Terraform Basic](./lab-102/guide.md)  
+- [Terraform Basic](./lab-102/guide-102.md)  
 - [Terraform Basic Lab](./lab-102/practice/handson.md)
 
 
-## 대형 프로젝트의 프로비저닝 전략
+## Terraform 프로젝트
+Terraform 프로젝트 레이아웃 및 구성이 복잡한 프로젝트를 위한 테라폼 프로비저닝 전략을 소개 합니다.  
+- [Terraform Project](./lab-103/guide-103.md)
 
-Workspace  Terraform 코드를 논리적 그룹으로 구성하는 방법입니다.
+## 아키텍처 설계
+- [diagrams.net](https://www.diagrams.net/) 을 통해 클라우드 아키텍처 다이어그램을 작성 합니다.  
+- [Architecture Design Lab](./lab-103/practice/handson.md)
 
 
 ```
 ```
-
-프로바이더, 리소스, 변수, 아웃풋 의 이해
-
-Terraform Basic - 짭게 소개 및 실습  - 프로바이더, 리소스, 변수, 아웃풋 의 이해
-파일 확장자의 의미
-
-Terraform Providers
-Configuration Directory
-Terraform Providers
-실습 Multiple Providers
-Using Input Variables
-Understanding the Variable Block
-실습 Variables
-Resource Attributes
-실습 Resource Attributes
-Resource Dependencies
-실습 Resource Dependencies
-Output Variables
-실습 Output Variables
+ 
 
 Terraform State
 Terraform State 소개
@@ -135,9 +121,6 @@ TF_LOG_PATH 환경 변수를 통한 로그파일 경로 설정
 AWS 클라우드 디자인 실습
 고객 요구사항 시나리오 - 개발/운영 환경의 분리
 네이밍 정책 및 태깅속성
-
-실습: 다이어그램 작성
-https://www.diagrams.net/
 
 VPC 구성
 
