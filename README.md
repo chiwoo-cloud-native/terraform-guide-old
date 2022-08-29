@@ -1,11 +1,14 @@
 # terraform-guide
 terraform-guide
 
+<br>
 
 ## 강의 소개
 
 Terraform 을 입문하는 개발자를 대상으로 Terraform 을 이해하고 프로비저닝 환경을 구성하고 간단한 실습 및 과제를 통해 보다 심도있는 이해를 목적으로 합니다.  
 Workspace 를 통한 대규모 프로젝트 관리에 대한 개요와 아주 작은 모듈화를 구현하는 실습을 통해 Terraform 을 응용하는 방법을 배웁니다.  
+
+<br>
 
 
 ## Before IaC
