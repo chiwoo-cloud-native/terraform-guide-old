@@ -1,17 +1,25 @@
 # Terraform 기초
 
-Provider, Resource, Variable, Output, Datasource 과 같은 Terraform 을 기초를 이해합니다.
+Terraform 아키텍처를 통해 동작 방식을 살펴보고 Provider, Resource, Variable, Output, Datasource 과 같은 Terraform 의 기본적인 요소를 이해합니다.
 
-Terraform 이 인식하는 확장자는 HCL(Hashicorp Configuration Language) 언어로 작성된 *.tf 파일 입니다.  
-Terraform 은 파일 이름에 상관없이 디렉토리내의 모든 .tf 파이일을 프로비저닝 리소스를 정의하고 있다고 간주 합니다.    
-또한 *.tfvars 는 테라폼 변수를 정의한 파일로 인식 합니다.
+Terraform 이 인식하는 확장자는 HCL(Hashicorp Configuration Language) 언어로 작성된 *.tf 파일 입니다.    
+
+Terraform 은 파일 이름에 상관없이 디렉토리내의 모든 .tf 파일을 프로비저닝 리소스를 정의하고 있다고 간주 합니다.  
+또한 *.tfvars 파일은 테라폼 변수를 정의합니다.
+
+<br>
+
+## Architecture
+
+![](../images/img_12.png)
 
 <br>
 
 ## Providers
 
-AWS, GCP, AZure 와 같은 클라우드 환경에 리소스 및 서비스를 생성할 수 있도록 각각의 벤더가 제공하는 Open-API 를 통해 액세스하는 제공자 입니다.  
-이를 위해 CSP 벤더 + OpenSource 연합히 협력하여 프로바이더를 제공 합니다.
+AWS, GCP, AZure 와 같은 클라우드 환경에 리소스 및 서비스를 생성할 수 있도록 각각의 벤더가 제공하는 Open-API 를 통해 액세스하는 주체가 Provider 입니다.    
+
+다음은 몇가지 Provider 를 정의 하는 예시 입니다.  
 
 - AWS 클라우드를 액세스 하기위한 프로바이더 선언 예시
 
