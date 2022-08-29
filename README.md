@@ -10,9 +10,12 @@ Workspace 를 통한 대규모 프로젝트 관리에 대한 개요와 아주 �
 
 ## Before IaC
 
+Cloud 와 IaC 가 있기 전에는 애플리케이션 서비스를 Legacy Data-Center 에 Spin-Up 하기 위해서 여러사람의 합의 및 의사 결정, 절차, 환경 등 많은 어려움이 있었습니다.
+
 ![Before IaC](images/img_10.png)
 
-클라우드와 IaC 가 있기 전에는 애플리케이션 서비스를 Legacy Data-Center 에 Spin-Up 하기까 위 그림과 같이 여러 어려움이 있었습니다.  
+- [Cloud 컴퓨팅 참고](https://ko.wikipedia.org/wiki/%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C_%EC%BB%B4%ED%93%A8%ED%8C%85)
+- [IaC 참고](https://en.wikipedia.org/wiki/Infrastructure_as_code)
 
 
 <br>
@@ -52,6 +55,7 @@ Workspace 를 통한 대규모 프로젝트 관리에 대한 개요와 아주 �
 <br><br>
 
 # Practice
+Code 를 직접 구현 하며 Terraform 의 실제 동작을 이해하고 주어진 문제를 해결해 가는 과정에서 클라우드 구성 배경과 효과적인 Solutions Architecture 를 이끌어 내기 위함입니다.  
 
 ## 프로비저닝 환경 구성
 [Terraform 설치](./lab-101/guide.md)
