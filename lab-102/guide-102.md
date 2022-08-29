@@ -2,7 +2,7 @@
 
 Terraform 아키텍처를 통해 동작 방식을 살펴보고 Provider, Resource, Variable, Output, Datasource 과 같은 Terraform 의 기본적인 요소를 이해합니다.
 
-Terraform 이 인식하는 확장자는 HCL(Hashicorp Configuration Language) 언어로 작성된 *.tf 파일 입니다.    
+Terraform 이 인식하는 확장자는 HCL(Hashicorp Configuration Language) 언어로 작성된 *.tf 파일 입니다.
 
 Terraform 은 파일 이름에 상관없이 디렉토리내의 모든 .tf 파일을 프로비저닝 리소스를 정의하고 있다고 간주 합니다.  
 또한 *.tfvars 파일은 테라폼 변수를 정의합니다.
@@ -17,17 +17,16 @@ Terraform 은 파일 이름에 상관없이 디렉토리내의 모든 .tf 파일
 
 ## Providers
 
-AWS, GCP, AZure 와 같은 클라우드 환경에 리소스 및 서비스를 생성할 수 있도록 각각의 벤더가 제공하는 Open-API 를 통해 액세스하는 주체가 Provider 입니다.    
+AWS, GCP, AZure 와 같은 클라우드 환경에 리소스 및 서비스를 생성할 수 있도록 각각의 벤더가 제공하는 Open-API 를 통해 액세스하는 주체가 Provider 입니다.
 
-다음은 몇가지 Provider 를 정의 하는 예시 입니다.  
+다음은 몇가지 Provider 를 정의 하는 예시 입니다.
 
 - AWS 클라우드를 액세스 하기위한 프로바이더 선언 예시
 
 ```hcl
 provider "aws" {
-  access_key = "<AWS_ACCESS_KEY>"
-  secret_key = "<AWS_SECRET_KEY>"
-  region     = "ap-northeast-2"
+  profile = "<MY-AWS-PROFILE>"
+  region  = "ap-northeast-2"
 }
 ```
 
@@ -58,15 +57,17 @@ terraform {
 }
 
 provider "aws" {
-  access_key = "<AWS_ACCESS_KEY>"
-  secret_key = "<AWS_SECRET_KEY>"
-  region     = "ap-northeast-2"
+  profile                  = "<MY-AWS-PROFILE>"
+  shared_config_files      = ["<YOUR-AWS-CONFIG-DIR>/config"]
+  shared_credentials_files = ["<YOUR-AWS-CONFIG-DIR>/credentials"]
+  region                   = "ap-northeast-2"
 }
 
 provider "google" {
-  project = "<MY-PROJECT-ID>"
-  region  = "us-central1"
-  zone    = "us-central1-c"
+  credentials = "<YOUR-GCP-CREDENTIALS-DIR>/credentials.json"
+  project     = "<MY-PROJECT-ID>"
+  region      = "us-central1"
+  zone        = "us-central1-c"
 }
 ```
 
@@ -91,31 +92,36 @@ provider "google" {
 
 ### Local 변수 및 활용
 
-로컬 scope(현재 디렉토리 범위) 내에서만 locals 로 정의한 로컬 변수를 참조 할 수 있습니다.  
-`local.` 참조자로 값을 참조 합니다.
+로컬 scope(현재 디렉토리 범위) 내에서만 locals 로 정의한 로컬 변수를 참조 할 수 있습니다.
+
+`local.` 참조자로 값을 참조 하며, 자주 사용되는 참조 정보, 일관된 리소스의 네이밍, 복잡한 데이터 구조 정의을 위해 활용할 수 있습니다.
 
 ![](../images/img_7.png)
 
 <br>
 
-### 변수 타입 정의
+### 변수 정의
 
-- Terraform 변수 타입을 정의 합니다.
+- Terraform 변수를 정의 합니다.
 
 ```
 # string 타입
 variable "name" {
+  description = "리소스 이름 입니다."
   type        = string 
 }
 
 # number 타입 
 variable "listen_port" {
+  description = "애플리케이션 서비스 포트 입니다."
   type        = number
 }
 
 # Boolean 타입 
 variable "enabled_ipv6" {
+  description = "IPv6 주소 체계를 활성화 합니다."
   type        = bool
+  default     = false
 }
 
 # List 컬렉션
@@ -126,6 +132,10 @@ variable "subnet_ids" {
 # Map 컬렉션
 variable "tags" {
   type        = map(string) 
+  default     = {
+    Project = "apple"
+    Team = "BTC"
+  }
 }
 
 ```
@@ -162,7 +172,7 @@ terraform plan -var-file=./dev.tfvars
 
 ## Outputs
 
-Terraform 을 통해 코드로 정의된 리소스 / 모듈이 프로비저닝 되어 인스턴스가 생성되면 해당 인스턴스가 가지는 속성을 output 으로 값을 보관할 수 있습니다.  
+Terraform 을 통해 코드로 정의된 리소스 / 모듈이 프로비저닝 되어 인스턴스가 생성되면 해당 인스턴스가 가지는 속성을 output 으로 값을 보관할 수 있습니다.    
 뿐만 아니라 사용자가 정의한 변수 역시 output 으로 값을 보관할 수 있습니다.    
 이렇게 보관된 정보는 프로비저닝 결과를 확인 하거나 프로비저닝 과정에서 의존성이 있는 리소스에 전달 할 수 있습니다.
 
