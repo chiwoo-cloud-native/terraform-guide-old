@@ -58,30 +58,34 @@ Cloud 와 IaC 가 있기 전에는 애플리케이션 서비스를 Legacy Data-C
 <br><br>
 
 # Practice
-Code 를 직접 구현 하며 Terraform 의 실제 동작을 이해하고 주어진 문제를 해결해 가는 과정에서 클라우드 구성 배경과 효과적인 Solutions Architecture 를 이끌어 내기 위함입니다.  
+Code 를 직접 구현 하며 Terraform 의 실제 동작을 이해하고 
+주어진 문제를 해결해 가는 과정에서 효과적인 Solutions Architecture 를 고민하고 구현을 통해 개발 역량을 높이기 위함입니다.  
 
-## 프로비저닝 환경 구성
+<br>
+
+
+## Lab 1-1: 프로비저닝 환경 구성
 [Terraform 설치](./lab-101/guide.md)
 
+<br>
 
-## Terraform Basic
+## Lab 1-2: Terraform Basic
 Terraform의 기초를 이해 합니다.   
-- [Terraform Basic](./lab-102/guide-102.md)  
-- [Terraform Basic Lab](./lab-102/practice/handson.md)
+- [Basic](./lab-102/guide-102.md)  
+- [Basic HandsOn](./lab-102/practice/handson.md)
 
 
-## Terraform 프로젝트
+## Lab 1-3: Terraform 프로젝트 구성 
 Terraform 프로젝트 레이아웃 및 구성이 복잡한 프로젝트를 위한 테라폼 프로비저닝 전략을 소개 합니다.  
 - [Terraform Project](./lab-103/guide-103.md)
-- [Project Layout Lab](./lab-103/practice/handson-02.md)
+- [Project Layout Lab](./lab-103/practice/handson.md)
 
-## 아키텍처 설계
+## Lab 1-4: 아키텍처 설계
 - [diagrams.net](https://www.diagrams.net/) 을 통해 클라우드 아키텍처 다이어그램을 작성 합니다.  
-- [Architecture Design Lab](./lab-103/practice/handson.md)
-- [Project-Layout Lab](./lab-103/practice/handson-02.md)
+- [Architecture Design Lab](./lab-104/practice/handson.md)
 
 
-## apple 프로젝트 구현
+## Lab 2-1: apple 프로젝트 구현
 - [apple](./lab-201/handson-201.md) 테라폼 프로젝트를 구현 합니다.  
 
 
