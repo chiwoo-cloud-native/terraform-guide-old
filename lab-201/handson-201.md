@@ -12,9 +12,7 @@
 ```
 
 ## 요구 사항 
-AWS 리소스의 이름은 여러 프로젝트 및 복잡한 고객 환경을 고려하여 일관된 리소스 이름과 태깅 속으로 관리 되어야 합니다.   
-
-### 공통 
+- AWS 리소스의 이름은 여러 프로젝트 및 복잡한 고객 환경을 고려하여 일관된 리소스 이름과 태깅 속으로 관리 되어야 합니다.     
 - 프로젝트 이름으로 관련된 모든 리소스를 식별 할 수 있어야 합니다.
 - Environment 속성으로 Stack 환경(dev, prd) 을 구분할 수 있어야 합니다.  
 - Team 과 Owner 를 식별할 수 있어야 합니다.
@@ -32,5 +30,13 @@ AWS 리소스의 이름은 여러 프로젝트 및 복잡한 고객 환경을 �
 - 인터넷을 통한 접근이 가능 해야 하며, 운영자의 접근이 가능하도록 운영자의 아이피와 SSH 포트만 허용합니다.
 - 볼륨 타입은 gp3 이며 10 GB 볼륨을 사용 합니다. 
 - Bastion EC2 는 필요에 따라 생성 및 제거 할 수 있으며, EC2 가 다시 생성되더라도 관리자는 고정된 IP 주소로 Bastion 에 접속이 가능해야 합니다.
+- Bastion EC2 가 제거 되더라도 VPC 에 영향을 주어선 안됩니다. 
 - keypair 는 apple-keypair 로 사전에 등록되어 있어야 합니다.
 
+## AWS 리소스 참고
+- [AWS 리소스](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)
+- [VPC](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/vpc)
+- [EC2](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance)
+- [SecurityGroup](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group)
+- [KeyPair](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/key_pair)
+- [Elastic IP](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eip)

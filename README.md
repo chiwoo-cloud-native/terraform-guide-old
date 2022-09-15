@@ -74,20 +74,27 @@ Terraform의 기초를 이해 합니다.
 - [Basic](./lab-102/guide-102.md)  
 - [Basic HandsOn](./lab-102/practice/handson.md)
 
+<br>
 
 ## Lab 1-3: Terraform 프로젝트 구성 
 Terraform 프로젝트 레이아웃 및 구성이 복잡한 프로젝트를 위한 테라폼 프로비저닝 전략을 소개 합니다.  
 - [Terraform Project](./lab-103/guide-103.md)
-- [Project Layout Lab](./lab-103/practice/handson.md)
+- [Project HandsOn](./lab-103/practice/handson.md)
+
+<br>
 
 ## Lab 1-4: 아키텍처 설계
 - [diagrams.net](https://www.diagrams.net/) 을 통해 클라우드 아키텍처 다이어그램을 작성 합니다.  
-- [Architecture Design Lab](./lab-104/practice/handson.md)
+- [Architecture Design HandsOn](./lab-104/practice/handson.md)
 
+
+<br>
 
 ## Lab 2-1: apple 프로젝트 구현
 - [apple](./lab-201/handson-201.md) 테라폼 프로젝트를 구현 합니다.  
 
+
+<br>
 
 # Meta-Arguments 이해와 모듈화 
 
