@@ -6,6 +6,7 @@ Terraform 기본 명령어와 프로비저닝 흐름을 이해 합니다.
 
 ## Terraform 명령어
 
+<br>
 
 ### terraform 버전 확인
 terraform 버전을 확인 합니다. 참고로 terraform 은 하위 호환성을 지켜주지 않으므로 버전 정의는 아주 중요합니다.  
@@ -20,8 +21,7 @@ terraform --help
 Usage: terraform [global options] <subcommand> [args]
 
 The available commands for execution are listed below.
-The primary workflow commands are given first, followed by
-less common or more advanced commands.
+The primary workflow commands are given first, followed by less common or more advanced commands.
 
 Main commands:
   init          Prepare your working directory for other commands
@@ -59,17 +59,24 @@ Global options (use these before the subcommand, if any):
 
 ### terraform 주요 명령어
 
-- terraform plan: 작성된 코드를 통해 REAL 인프라가 어떻게 적용 될 것인지 미리 계획을 보여 줍니다. 
+- terraform plan: 작성된 코드를 통해 REAL 인프라가 어떻게 적용 될 것인지 미리 계획을 보여 줍니다. 또한 작성된 코드의 오류가 없는지도 확인 합니다. 
+
 ```shell
 terraform plan 
 ```
 
+<br>
+
 - terraform apply: 명령을 통해 작성된 Code 를 REAL 인프라에 적용 합니다. 
+
 ```shell
 terraform apply  
 ```
 
+<br>
+
 - terraform destroy: 명령을 통해 현재 Code 에 대응하여 REAL 인프라에 구성된 모든 리소스를 제거 합니다.
+
 ```shell
 terraform destroy  
 ```
