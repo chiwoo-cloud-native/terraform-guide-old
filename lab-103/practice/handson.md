@@ -41,12 +41,12 @@ resource "aws_vpc" "my_vpc" {
 |   aws_vpc   |    -    |     -      | &lt;QA1&gt; |
 |   aws_vpc   | aws_vpc |     -      | &lt;QA2&gt; |
 |   aws_vpc   | aws_vpc |  aws_vpc   | &lt;QA3&gt; |
-|             | aws_vpc |  aws_vpc   | &lt;QA4&gt; |
-|             |         |  aws_vpc   | &lt;QA5&gt; |
-|             | aws_vpc |            | &lt;QA6&gt; |
+|      -      | aws_vpc |  aws_vpc   | &lt;QA4&gt; |
+|      -      |    -    |  aws_vpc   | &lt;QA5&gt; |
+|      -      | aws_vpc |            | &lt;QA6&gt; |
 
 
-올 수 있는 Operation 은 create REAL, delete REAL, update state, nothing 입니다.  
+올 수 있는 Operation 은 create REAL, delete REAL, update state, '-' 입니다.  
  
 
 
