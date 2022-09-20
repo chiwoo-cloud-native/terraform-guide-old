@@ -1,6 +1,6 @@
 # Terraform State 소개
 
-Terraform 기본 명령어와 프로비저닝 흐름을 이해 합니다. 
+Terraform 기본 명령어와 프로비저닝 흐름을 이해 합니다.
 
 <br>
 
@@ -9,12 +9,15 @@ Terraform 기본 명령어와 프로비저닝 흐름을 이해 합니다.
 <br>
 
 ### terraform 버전 확인
-terraform 버전을 확인 합니다. 참고로 terraform 은 하위 호환성을 지켜주지 않으므로 버전 정의는 아주 중요합니다.  
+
+terraform 버전을 확인 합니다. 참고로 terraform 은 하위 호환성을 지켜주지 않으므로 버전 정의는 아주 중요합니다.
+
 ```shell
 terraform -version
 ```
 
 ### terraform --help
+
 ```shell
 terraform --help
 
@@ -59,7 +62,7 @@ Global options (use these before the subcommand, if any):
 
 ### terraform 주요 명령어
 
-- terraform plan: 작성된 코드를 통해 REAL 인프라가 어떻게 적용 될 것인지 미리 계획을 보여 줍니다. 또한 작성된 코드의 오류가 없는지도 확인 합니다. 
+- terraform plan: 작성된 코드를 통해 REAL 인프라가 어떻게 적용 될 것인지 미리 계획을 보여 줍니다. 또한 작성된 코드의 오류가 없는지도 확인 합니다.
 
 ```shell
 terraform plan 
@@ -67,7 +70,7 @@ terraform plan
 
 <br>
 
-- terraform apply: 명령을 통해 작성된 Code 를 REAL 인프라에 적용 합니다. 
+- terraform apply: 명령을 통해 작성된 Code 를 REAL 인프라에 적용 합니다.
 
 ```shell
 terraform apply  
@@ -84,27 +87,32 @@ terraform destroy
 <br>
 <br>
 
-## Terraform 상태 관리 
-terraform 프로비저닝 흐름은 다음과 같습니다. 
+## Terraform 상태 관리
+
+terraform 프로비저닝 흐름은 다음과 같습니다.
 
 ![](../images/img_16.png)
 
-
 ### terraform code
+
 Provider, Resource, Data Source, Output, Variable 을 통해 코드를 작성 합니다.
 
 ### terraform.tfstate
+
 plan / apply 를 통해 코드가 REAL 인프라에 적용된 결과 상태를 저장 합니다.
 
 ### Real Infrastructure
-AWS, AZure, GCP 와 같은 클라우드에 네트워크, 컴퓨팅 리소스, 소프트웨어 서비스가 구성된 가상의 데이터 센터 입니다. 
+
+AWS, AZure, GCP 와 같은 클라우드에 네트워크, 컴퓨팅 리소스, 소프트웨어 서비스가 구성된 가상의 데이터 센터 입니다.
 
 
 <br>
 
 ## tfstate 로컬 관리
-프로젝트의 Workspace 기준으로 REAL 인프라를 구성하고 여기에 대응하는 tfstate 상태 파일을 로컬 환경(PC)에서 관리 합니다. 
-공동 작업을 위해선 terraform code(*.tf) 뿐만 아니라 현재 REAL Infra 에 대응하는 최신의 terraform.tfstate 파일을 공유하여야 합니다.   
+
+프로젝트의 Workspace 기준으로 REAL 인프라를 구성하고 여기에 대응하는 tfstate 상태 파일을 로컬 환경(PC)에서 관리 합니다. 공동 작업을 위해선 terraform code(*.tf) 뿐만 아니라
+현재 REAL Infra 에 대응하는 최신의 terraform.tfstate 파일을 공유하여야 합니다.
+
 ```shell
 Workspace
 ├── templates
@@ -124,16 +132,69 @@ Workspace
 
 
 <br>
+<br>
 
-### tfstate 리모트 관리 (Advanced)
+## tfstate 리모트 관리 (Advanced)
+
+### Remote 저장소 구성
+
+- 프로젝트 레이아웃
+
+```
+
+```
+
+```
+cd lab-103/example/repository
+
+terraform init --upgrade
+
+terraform plan
+
+```
+
+### Remote backend 활용 예시
 
 
+```hcl
+terraform {
+  required_version = ">= 1.2.0, < 2.0.0"
+
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "> 4.4.0"
+    }
+  }
+
+  backend "s3" {
+    bucket         = "terraform-tfstates-mgmt"
+    key            = "demo/prod/terraform.tfstate"
+    region         = "ap-northeast-2"
+    dynamodb_table = "terraform-lock-table"
+    encrypt        = false
+    acl            = "bucket-owner-full-control"
+  }
+}
+
+
+```
 
 <br>
 
-### tfstate 분할 관리  (Advanced)
-stack 의 의존성을 제거하고 
+## tfstate 분할 관리  (Advanced)
 
-- 로컬 관리
-- 분할 관리
-- 리모트 관리
+서비스 운영 환경 구분은 Production, Stage, Development, Seoul, USA 등으로 할 수 있습니다.    
+이렇게 구분 하는 단위로 우리는 `Environment` 또는 `Stack` 이라고 말합니다.
+
+<br> 
+
+tfstate 상태 파일의 분할 관리 목적은
+
+1. 서비스 운영 환경을 구분 짓고,
+2. 각 환경의 의존성이 없이 독립적으로 운영 되고,
+3. 대규모의 인프라를 블럭 단위로 결합 하는것과 같이 작은 단위로 관리 함으로써 문제를 최소화 하고 가독성을 높으며,
+4. 동일한 코드를 통해 각 환경에 맞게 자동화 된 관리가 가능 하도록 설계에 반영 하는 것 입니다.  
+
+
+
