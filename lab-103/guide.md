@@ -82,6 +82,7 @@ terraform destroy
 ```
 
 <br>
+<br>
 
 ## Terraform 상태 관리 
 terraform 프로비저닝 흐름은 다음과 같습니다. 
@@ -101,11 +102,21 @@ AWS, AZure, GCP 와 같은 클라우드에 네트워크, 컴퓨팅 리소스, �
 
 <br>
 
-## tfstate 상태 관리
-
-### tfstate 로컬 관리
-각각의 디렉토리 기준으로 REAL 인프라를 구성하고 여기에 대응하는 tfstate 상태 파일을 관리 합니다.
-
+## tfstate 로컬 관리
+프로젝트의 Workspace 기준으로 REAL 인프라를 구성하고 여기에 대응하는 tfstate 상태 파일을 로컬 환경(PC)에서 관리 합니다. 
+공동 작업을 위해선 terraform code(*.tf) 뿐만 아니라 현재 REAL Infra 에 대응하는 최신의 terraform.tfstate 파일을 공유하여야 합니다.   
+```shell
+Workspace
+├── templates
+│   └── MFAPolicy.json
+├── main.tf
+├── outputs.tf
+├── providers.tf
+├── terraform.tfstate
+├── terraform.tfstate.backup
+├── terraform.tfvars
+└── variables.tf
+```
 
 <br>
 
