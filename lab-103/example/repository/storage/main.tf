@@ -1,8 +1,10 @@
 resource "aws_s3_bucket" "tfstat" {
   bucket = var.bucket_name
 
+  force_destroy = true
+
   lifecycle {
-    prevent_destroy = true
+    prevent_destroy = false
   }
 
   tags = {
