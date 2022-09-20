@@ -15,6 +15,24 @@ Terraform 은 파일 이름에 상관없이 디렉토리내의 모든 .tf 파일
 
 <br>
 
+## Workflow
+
+![](../images/img_17.png)
+
+- write: Terraform Code 파일은 tf 확장자를 사용하며, 생성할 리소스들에 대한 tf 파일을 작성합니다.  
+<br>
+- init: Terraform 프로바이더 및 모듈과 같은 프로비저닝 환경이 포함된 프로젝트(작업 디렉토리)를 초기화하는 데 사용됩니다.    
+        새로운 Terraform 구성을 작성했거나 버전이 변경된 경우에 실행해야 합니다.  
+<br>
+- plan: tf 파일의 내용을 반영할 경우 변경되는 점을 시각적으로 보여주고 적용이 가능한지 확인하는 과정입니다.  
+  <br>
+- apply: tf 파일의 내용을 실제 REAL 반영하는 작업입니다.  
+<br>
+- destroy: tf 파일의 내용을 기준으로 정의된 리소스를 REAL 인프라에서 삭제하는 작업입니다.  
+
+
+<br>
+
 ## Provider
 
 AWS, GCP, AZure 와 같은 클라우드 환경에 리소스 및 서비스를 생성할 수 있도록 각각의 벤더가 제공하는 Open-API 를 통해 액세스하는 주체가 Provider 입니다.
@@ -74,9 +92,10 @@ provider "google" {
 <br>
 
 ## Resource
+테라폼 핵심 개체로 REAL 인프라에 구성 할 대상을 코드로 정의 하며 REAL 인프라에서 실제 인스턴스를 생성 / 수정 / 삭제 등과 같은 자동화된 관리를 할 수 있습니다.    
+또한, AWS, AZure, GCP, Kubernetes 등 프로바이더로부터 `resource` 예약어를 통해 다양한 유형의 리소스를 정의 합니다.    
 
-리소스란 프로바이더가 제공해주는 코드(resource)로 정의하여 인스턴트를 생성/수정/삭제 가능한 대상의 단위 이며 `resource` 예약어로 정의 합니다.  
-아래와 같이 aws_instance 리소스 타입은 Amazon EC2 가상 머신을 resource 예약어로 선언하고 테라폼을 통해 프로비저닝 합니다.
+아래와 같이 aws_instance 리소스 타입은 Amazon EC2 가상 머신을 resource 예약어로 선언하고 테라폼을 통해 프로비저닝 할 수 있습니다.
 
 ```hcl
 resource "aws_instance" "bastion" {

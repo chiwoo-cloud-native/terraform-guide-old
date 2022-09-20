@@ -71,27 +71,35 @@ Code 를 직접 구현 하며 Terraform 의 실제 동작을 이해하고
 
 ## Lab 1-2: Terraform Basic
 Terraform의 기초를 이해 합니다.   
-- [Basic](./lab-102/guide-102.md)  
+- [Basic](./lab-102/guide.md)  
 - [Basic HandsOn](./lab-102/practice/handson.md)
 
 <br>
 
-## Lab 1-3: Terraform 프로젝트 구성 
-Terraform 프로젝트 레이아웃 및 구성이 복잡한 프로젝트를 위한 테라폼 프로비저닝 전략을 소개 합니다.  
-- [Terraform Project](./lab-103/guide-103.md)
-- [Project HandsOn](./lab-103/practice/handson.md)
+## Lab 1-3:Terraform State 소개
+Terraform Code - `tfstate` - REAL Infrastructure 를 이해 합니다.  
+- [terraform.tfstate](./lab-103/guide.md)
+- [Question](./lab-103/practice/handson.md)
+
 
 <br>
 
-## Lab 1-4: 아키텍처 설계
+## Lab 2-1: Terraform 프로젝트 구성 
+Terraform 프로젝트 레이아웃 및 구성이 복잡한 프로젝트를 위한 테라폼 프로비저닝 전략을 소개 합니다.  
+- [Terraform Project](./lab-201/guide.md)
+- [Project HandsOn](./lab-201/practice/handson.md)
+
+<br>
+
+
+## Lab 2-2: 아키텍처 설계
 - [diagrams.net](https://www.diagrams.net/) 을 통해 클라우드 아키텍처 다이어그램을 작성 합니다.  
 - [Architecture Design HandsOn](./lab-104/practice/handson.md)
 
-
 <br>
 
-## Lab 2-1: apple 프로젝트 구현
-- [apple](./lab-201/handson-201.md) 테라폼 프로젝트를 구현 합니다.  
+## Lab 2-3: apple 프로젝트 구현
+- [apple](lab-202/handson.md) 테라폼 프로젝트를 구현 합니다.  
 
 
 <br>
@@ -111,10 +119,7 @@ Meta 아규먼트 설명 및 예시와 Meta 아규먼트를 통한 리소스 정
 - [Meta-Arguments Lab](./lab-202/practice/handson.md) 
 
 
-## Terraform State 소개
-- 로컬 관리
-- 분할 관리
-- 리모트 관리 
+
 
 ## Terraform 트러블 슈팅
 - 디버깅 

@@ -19,7 +19,19 @@ Terraform 에서 권고하는 프로젝트 레이아웃은 [Standard Module Stru
 │   │   ├── security-group.tf
 │   │   ├── target-group.tf
 │   │   └── variables.tf
-│   ├── ec2
+│   ├── ecs
+│   │   ├── data.tf
+│   │   ├── env
+│   │   │   ├── dev.tfvars
+│   │   │   └── prd.tfvars
+│   │   ├── state
+│   │   ├── iam-role.tf
+│   │   ├── outputs.tf
+│   │   ├── main.tf
+│   │   ├── providers.tf
+│   │   ├── security-group.tf
+│   │   └── variables.tf
+│   ├── rds
 │   │   ├── data.tf
 │   │   ├── env
 │   │   │   ├── dev.tfvars
