@@ -112,6 +112,10 @@ resource "aws_instance" "bastion" {
 }
 ```
 
+<br>
+
+- 리소스 구조 확인 
+
 ![](../images/img_6.png)
 
 
@@ -120,6 +124,7 @@ resource "aws_instance" "bastion" {
 ## Variable
 
 리소스가 참조하는 변수로 `var.` 참조자를 통해 값을 참조 할 수 있습니다.  
+
 ![](../images/img_8.png)
 
 <br>
