@@ -138,47 +138,63 @@ Workspace
 
 ### Remote 저장소 구성
 
+- 구성 개요 
+
+![](../images/img_18.png)
+
+- [repository 구성 참고](./example/repository/)
+
+  
 - 프로젝트 레이아웃
 
 ```
-
+.
+├── lock                    Terraform 동시 프로비저닝 방지를 위한 DynamoDB Lock 테이블 구성
+│   ├── main.tf
+│   └── variables.tf
+├── storage                 Terraform 상태 파일 저장을 위한 S3 구성 
+│   ├── main.tf
+│   └── variables.tf
+├── main.tf
+├── providers.tf
+└── terraform.tfstate
 ```
 
+
+- Deploy
 ```
 cd lab-103/example/repository
 
+# 프로젝트 초기화구성 
 terraform init --upgrade
 
+# 플랜 확인 
 terraform plan
+
+# 적용 
+terraform apply
 
 ```
 
-### Remote backend 활용 예시
-
+### Remote 저장소 Provider 구성 예시
 
 ```hcl
 terraform {
   required_version = ">= 1.2.0, < 2.0.0"
 
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "> 4.4.0"
-    }
-  }
-
   backend "s3" {
-    bucket         = "terraform-tfstates-mgmt"
-    key            = "demo/prod/terraform.tfstate"
-    region         = "ap-northeast-2"
-    dynamodb_table = "terraform-lock-table"
-    encrypt        = false
+    dynamodb_table = "symple-terraform-lock"
+    key            = "symple-dev/terraform.tfstate"
     acl            = "bucket-owner-full-control"
+    bucket         = "symple-terraform-repo"
+    encrypt        = true
+    region         = "ap-northeast-2"
   }
 }
-
-
 ```
+
+- [테라폼 프로젝트 VPC 구성 예시](./example/simple/)
+
 
 <br>
 
