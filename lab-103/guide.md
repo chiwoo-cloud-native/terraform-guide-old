@@ -120,13 +120,18 @@ Workspace
 
 <br>
 
-### tfstate 리모트 관리
+[문제 풀이를 통해 생각해 봅시다.](./practice/handson.md)
+
+
+<br>
+
+### tfstate 리모트 관리 (Advanced)
 
 
 
 <br>
 
-### tfstate 분할 관리
+### tfstate 분할 관리  (Advanced)
 stack 의 의존성을 제거하고 
 
 - 로컬 관리
