@@ -213,4 +213,12 @@ tfstate 상태 파일의 분할 관리 목적은
 4. 동일한 코드를 통해 각 환경에 맞게 자동화 된 관리가 가능 하도록 설계에 반영 하는 것 입니다.  
 
 
+### Workspace 를 통한 관리
+
+
+### Module 을 통한 관리
+
+
+https://www.codurance.com/publications/2020/04/28/terraform-with-multiple-environments
+
 
