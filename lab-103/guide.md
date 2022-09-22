@@ -200,6 +200,9 @@ terraform {
 
 ## tfstate 분할 관리  (Advanced)
 
+![](../images/img_21.png)
+
+
 서비스 운영 환경 구분은 Production, Stage, Development, Seoul, USA 등으로 할 수 있습니다.    
 이렇게 구분 하는 단위로 우리는 `Environment` 또는 `Stack` 이라고 말합니다.
 
@@ -212,8 +215,94 @@ tfstate 상태 파일의 분할 관리 목적은
 3. 대규모의 인프라를 블럭 단위로 결합 하는것과 같이 작은 단위로 관리 함으로써 문제를 최소화 하고 가독성을 높으며,
 4. 동일한 코드를 통해 각 환경에 맞게 자동화 된 관리가 가능 하도록 설계에 반영 하는 것 입니다.  
 
+### 프로젝트 구성 심플
+
+테라폼 프로젝트를 아래와 같이 주요 구성 파일을 포함하여 간단하게 구성 할 수 있습니다.
+
+```
+symple
+├── data.tf
+├── main.tf
+├── outputs.tf
+├── providers.tf
+├── terraform.tfvars
+└── varibles.tf
+```
+
+테라폼 명령을 통해 프로젝트 초기화 및 프로비저닝을 할 수 있습니다.
+
+```bash
+terraform init
+terraform plan
+terraform apply
+terraform destory
+```
+
+<br>
+
+
+### 프로젝트 폴더(모듈)을 통한 분할 관리
+
+![](../images/img_20.png)
+
+위 구조에서 각 환경에 맞는 디렉토리 구조에서 테라폼 코드 `*.tf` 와 `terraform.tfvars` 를 통해 REAL Infra 를 대상으로 프로비저닝 할 수 있습니다.  
+
+동일한 파일을 유지 관리하기 때문에 `main.tf` terraform `variables.tf` 명령을 실행할 때 환경에 따라 다른 변수를 전달해야 합니다.
+
+예를 들어 세 가지 환경이 있는 경우 인프라 생성을 위해 실행해야 하는 명령입니다.
+
+- **각 환경별 프로비저닝 ** 구성 예시
+```shell
+# Dev Environment
+terraform plan --var-file="tfvars/environment/dev.tfvars" 
+
+# QA Environment
+terraform plan --var-file="tfvars/environment/qa.tfvars"
+
+# Production Environment 
+terraform plan --var-file="tfvars/environment/prod.tfvars"
+```
+
+<br>
+
+#### 폴더 구성의 장점
+- 코드 중복이 없습니다
+- 리소스를 변경하고 싶다면 모든 환경에서 변경할 필요는 없습니다.
+
+#### 폴더 구성의 단점
+- 각 환경에서 리소스를 쉽게 추가하거나 제거할 수 없습니다.
+- 동일한 파일을 다른 var 파일과 함께 사용하기 때문에 한 환경의 변경 사항은 다른 환경에 영향을 미칩니다.
+
+<br>
+<br>
+
 
 ### Workspace 를 통한 관리
+terraform Workspace 는  여러 상태를 단일 구성을 통해 관리 할 수 있는 기능 입니다.
+
+아무것도 구성하지 않아도 default 라는 Workspace 가 있습니다.
+
+```shell
+terraform workspace list
+* default
+```
+
+새로운 Workspace 추가는 `terraform workspace new` 명령어로 할 수 있습니다.  
+```shell
+terraform workspace new dev
+terraform workspace new stg
+terraform workspace new prod
+
+terraform workspace select dev
+Switched to workspace "dev"
+terraform workspace list
+
+default
+* dev
+  prd
+  stg
+```
+
 
 
 ### Module 을 통한 관리
