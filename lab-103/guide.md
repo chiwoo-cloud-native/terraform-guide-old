@@ -229,7 +229,7 @@ symple
 └── varibles.tf
 ```
 
-테라폼 명령을 통해 프로젝트 초기화 및 프로비저닝을 할 수 있습니다.
+또한 우리는 테라폼 명령을 통해 프로젝트 초기화 및 프로비저닝을 할 수 있습니다.
 
 ```bash
 terraform init
@@ -243,13 +243,15 @@ terraform destory
 
 ### 프로젝트 폴더(모듈)을 통한 분할 관리
 
+프로젝트 폴더를 통한 분할 관리는 각 환경에 맞는 디렉토리 구조에서 테라폼 코드 `*.tf` 와 `terraform.tfvars` 를 통해 REAL Infra 를 대상으로 프로비저닝 할 수 있습니다.
+
+
 ![](../images/img_20.png)
 
-위 구조에서 각 환경에 맞는 디렉토리 구조에서 테라폼 코드 `*.tf` 와 `terraform.tfvars` 를 통해 REAL Infra 를 대상으로 프로비저닝 할 수 있습니다.  
-
+  
 동일한 파일을 유지 관리하기 때문에 `main.tf` terraform `variables.tf` 명령을 실행할 때 환경에 따라 다른 변수를 전달해야 합니다.
 
-예를 들어 세 가지 환경이 있는 경우 인프라 생성을 위해 실행해야 하는 명령입니다.
+예를 들어 세 가지 환경이 있는 경우 각각의 환경에 대한 프로비저닝을 하기 위해 다음과 같이 명령을 실행 하여야 합니다.
 
 - **각 환경별 프로비저닝 ** 구성 예시
 ```shell
@@ -278,36 +280,46 @@ terraform plan --var-file="tfvars/environment/prod.tfvars"
 
 
 ### Workspace 를 통한 관리
-terraform Workspace 는  여러 상태를 단일 구성을 통해 관리 할 수 있는 기능 입니다.
 
-아무것도 구성하지 않아도 default 라는 Workspace 가 있습니다.
+terraform Workspace 는 여러 상태를 단일 구성을 통해 관리 할 수 있는 기능 입니다.    
+폴더 기준의 분할 관리와 거의 차이가 없어 보이지만 명확하게 환경을 지정해야 하고 상태 및 변수를 자동으로 관리합니다.    
+
+아무것도 구성하지 않더라도 `default` 라는 Workspace 가 있습니다.
 
 ```shell
 terraform workspace list
 * default
 ```
 
-새로운 Workspace 추가는 `terraform workspace new` 명령어로 할 수 있습니다.  
+<br>
+
+새로운 workspace 추가는 `terraform workspace new` 명령어로 할 수 있습니다.  
 ```shell
 terraform workspace new dev
 terraform workspace new stg
-terraform workspace new prod
+terraform workspace new prd
+```
 
-terraform workspace select dev
-Switched to workspace "dev"
+`terraform workspace list` 명령어로 workspace 를 확인 할 수 있으며 `*` 는 현재 선택된 프로비저닝 타겟 환경 입니다.  
+```shell
 terraform workspace list
-
-default
-* dev
+* default
+  dev
   prd
   stg
 ```
 
+`terraform workspace select` 명령어로 프로비저닝 워크스페이스를 'stg'로 변경해 봅시다.
 
+```shell
+# 타겟 워크스페이스 변경 
+terraform workspace select stg
+Switched to workspace "stg".
 
-### Module 을 통한 관리
-
-
-https://www.codurance.com/publications/2020/04/28/terraform-with-multiple-environments
-
-
+# 현재 프로비저닝 대상 타겟 워크스페이스 확인 
+terraform workspace list
+  default
+  dev
+  prd
+* stg
+```
