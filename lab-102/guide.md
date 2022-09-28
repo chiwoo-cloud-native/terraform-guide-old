@@ -89,12 +89,15 @@ provider "google" {
 }
 ```
 
-### 온라인 가이드 참조 
+### 프로바이더 참조 
 - [AWS](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)
 - [Azure](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs)
 - [GCP](https://registry.terraform.io/providers/hashicorp/google/latest/docs)
 - [kubernetes](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs)
-- 
+- [confluent](https://registry.terraform.io/providers/confluentinc/confluent/latest/docs)
+- [datadog](https://registry.terraform.io/providers/DataDog/datadog/latest/docs)
+- [datadog](https://registry.terraform.io/providers/DataDog/datadog/latest/docs)
+- [elasticstack](https://registry.terraform.io/providers/elastic/elasticstack/latest/docs)
 
 <br>
 

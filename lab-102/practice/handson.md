@@ -10,7 +10,7 @@
 - 이름은 my-bastion 입니다.
 - instance_type 은 t2.micro 입니다.
 - ami 이미지 아이디는 "ami-08f869ae259b6bc98" 입니다.
-- 태그 속성명으로 ManagedBy, Team, Owner 를 추가 하세요.
+- ManagedBy, Team, Owner, OS 등 필요한 태그 속성들을 추가 하세요.
 
 [terraform resource 참조](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance)  
 
