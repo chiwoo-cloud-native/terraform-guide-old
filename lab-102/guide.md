@@ -37,7 +37,7 @@ Terraform 은 파일 이름에 상관없이 디렉토리내의 모든 .tf 파일
 
 AWS, GCP, AZure 와 같은 클라우드 환경에 리소스 및 서비스를 생성할 수 있도록 각각의 벤더가 제공하는 Open-API 를 통해 액세스하는 주체가 Provider 입니다.
 
-다음은 몇가지 Provider 를 정의 하는 예시 입니다.
+[Provider](https://registry.terraform.io/browse/providers) 는 CSP 및 오픈소스에서 제공 되고 있으며 다음은 Provider 를 정의 하는 예시 입니다.
 
 - AWS 클라우드를 액세스 하기위한 프로바이더 선언 예시
 
@@ -88,6 +88,13 @@ provider "google" {
   zone        = "us-central1-c"
 }
 ```
+
+### 온라인 가이드 참조 
+- [AWS](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)
+- [Azure](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs)
+- [GCP](https://registry.terraform.io/providers/hashicorp/google/latest/docs)
+- [kubernetes](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs)
+- 
 
 <br>
 
@@ -204,6 +211,19 @@ tags         = {
 
 ```
 terraform plan -var-file=./dev.tfvars
+```
+
+4. `-var` 옵션을 통해 콘솔 명령에서 직접 입력
+```
+terraform plan -var foo="bar" -var fruit="apple" 
+```
+
+5. `Tf_VAR_` 환경 변수를 통한 입력
+```
+export TF_VAR_foo="bar"
+export TF_VAR_fruit="apple"
+
+terraform plan 
 ```
 
 <br>
