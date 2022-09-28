@@ -94,12 +94,12 @@ Terraform 프로젝트 레이아웃 및 구성이 복잡한 프로젝트를 위�
 
 ## Lab 2-2: 아키텍처 설계
 - [diagrams.net](https://www.diagrams.net/) 을 통해 클라우드 아키텍처 다이어그램을 작성 합니다.  
-- [Architecture Design HandsOn](./lab-104/practice/handson.md)
+- [Architecture Design HandsOn](./lab-202/practice/handson.md)
 
 <br>
 
 ## Lab 2-3: apple 프로젝트 구현
-- [apple](lab-202/handson.md) 테라폼 프로젝트를 구현 합니다.  
+- [apple](lab-203/practice/handson.md) 테라폼 프로젝트를 구현 합니다.  
 
 
 <br>
