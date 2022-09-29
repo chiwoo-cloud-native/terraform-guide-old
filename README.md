@@ -218,7 +218,7 @@ Terraform 환경 변수 설정으로 플러그인 및 디버깅을 효과적으�
   TRACE, DEBUG, INFO, WARN, ERROR
 - TF_LOG_PATH: 로그 파일경로에 로그 내역을 기록 합니다.  
 
-`.bashrc` 등 사용자 프로파일 스크립트에 환경 변수를 등록 합니ㅏㄷ.  
+`.bashrc` 등 사용자 프로파일 스크립트에 환경 변수를 등록 합니다.  
 
 ```
 export TF_PLUGIN_CACHE_DIR="${HOME}/.terraform"
