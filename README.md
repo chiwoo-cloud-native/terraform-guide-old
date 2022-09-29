@@ -173,13 +173,16 @@ lifecycle 는 다음의 프로비저닝 과정을 컨트롤 할 수 있습니다
 - 기존 리소스를 삭제하고 새로 생성하여 리소스 업데이트
 
 #### ignore_changes
-example ec2 인스턴스에 대해 Tag 속성이 변경되더라도 tfstate 동기화 대상에서 제외 합니다.  
+`resource` 가 가지는 속성에 대해 변경 사항이 생기더라도 tfstate 상태 정보의 동기화 대상에서 제외 합니다.  
+
+example ec2 인스턴스에 대해 tag, ami 속성이 변경되더라도 프로비저닝 동기화를 하지 않습니다.   
 
 ```hcl
 resource "aws_instance" "example" {
   lifecycle {
     ignore_changes = [
       tags,
+      ami
     ]
   }
 }
