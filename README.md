@@ -210,14 +210,21 @@ example ec2 인스턴스가 삭제되는것을 방지합니다.
 ## Terraform 트러블 슈팅
 
 ### 디버깅
-TF_LOG 및 TF_LOG_PATH 환경 변수를 설정하여 세밀한 처리 과정을 모니터링 할 수 있습니다. 
+
+Terraform 환경 변수 설정으로 플러그인 및 디버깅을 효과적으로 할 수 있습니다.
+
+- TF_PLUGIN_CACHE_DIR: 다운로드한 프로바이더를 캐쉬 하여 버전별 관리를 통해 매번 다운로드 하지 않도록 합니다.
+- TF_LOG: 프로비저닝 로그 레벨을 설정 합니다.  
+  TRACE, DEBUG, INFO, WARN, ERROR
+- TF_LOG_PATH: 로그 파일경로에 로그 내역을 기록 합니다.  
+
+`.bashrc` 등 사용자 프로파일 스크립트에 환경 변수를 등록 합니ㅏㄷ.  
 
 ```
-export TF_LOG_PATH=./terraform.log
+export TF_PLUGIN_CACHE_DIR="${HOME}/.terraform"
+export TF_LOG_PATH="${HOME}/.terraform/log/terraform.log"
 export TF_LOG=trace
 ```
-
-- TF_LOG 환경 변수를 통한 로그 레벨 설정 - TRACE, DEBUG, INFO, WARN, ERROR
  
 ### validation
 변수를 선언할 때 validation 을 통해 입력 형식을 컨트롤 할 수 있습니다. 
