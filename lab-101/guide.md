@@ -50,6 +50,30 @@ aws ec2 describe-vpcs --region ap-northeast-2 --query "Vpcs[].[ [Tags[?Key=='Nam
 
 <br>
 
+## MFA 정책으로 임시 토큰을 발급 받는 경우
+
+[mfa.sh]
+```shell
+#!/bin/sh
+#
+#MFA_SERIAL - get from IAM console under user security 
+#TOKEN - the MFA token 
+
+
+MFA_SERIAL=$1
+MFA_TOKEN=$2
+
+aws sts get-session-token --serial-number $MFA_SERIAL --token-code $MFA_TOKEN --region ap-northeast-2 --profile terra > myfile
+export AWS_ACCESS_KEY_ID=$(cat myfile | jq .Credentials.AccessKeyId |tr -d '"')
+export AWS_SECRET_ACCESS_KEY=$(cat myfile | jq .Credentials.SecretAccessKey  |tr -d '"')
+export AWS_SESSION_TOKEN=$(cat myfile | jq .Credentials.SessionToken  |tr -d '"' )
+
+echo "Usage: mfa.sh <MFA_SERIAL> <MFA_TOKEN>"
+echo "mfa.sh arn:aws:iam::1234567890:mfa/YOUR-IAM-ARN 123456"
+```
+
+<br>
+
 ## Terraform 설치 
 
 **Terraform**은 하위 호환성을 엄격하게 지키고 있지 않습니다. 그러므로 프로젝트 구성에 있어서 버전은 중요한 결정 요소중 하나 입니다.    
