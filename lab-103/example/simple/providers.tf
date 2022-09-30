@@ -17,3 +17,8 @@ terraform {
     region         = "ap-northeast-2"
   }
 }
+
+provider "aws" {
+  profile = "terra"
+  region  = "ap-northeast-2"
+}
