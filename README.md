@@ -224,12 +224,13 @@ Terraform 환경 변수 설정으로 플러그인 및 디버깅을 효과적으�
 `.bashrc` 등 사용자 프로파일 스크립트에 환경 변수를 등록 합니다.  
 
 ```
-export TF_PLUGIN_CACHE_DIR="${HOME}/.terraform"
-export TF_LOG_PATH="${HOME}/.terraform/log/terraform.log"
-export TF_LOG=trace
+export TF_PLUGIN_CACHE_DIR="$HOME/.terraform.d/plugin-cache"
+TF_LOG_PATH="./logs/terraform.log"
+TF_LOG="DEBUG"
+alais tflog='tail -f ${TF_LOG_PATH}'
 ```
- 
-### validation
+
+### Validation
 변수를 선언할 때 validation 을 통해 입력 형식을 컨트롤 할 수 있습니다. 
 
 ```hcl

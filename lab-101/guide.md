@@ -52,25 +52,57 @@ aws ec2 describe-vpcs --region ap-northeast-2 --query "Vpcs[].[ [Tags[?Key=='Nam
 
 ## MFA 정책으로 임시 토큰을 발급 받는 경우
 
-[mfa.sh]
+- [mfa.sh](./mfa.sh) 쉘 파일 참고 
 ```shell
-#!/bin/sh
-#
-#MFA_SERIAL - get from IAM console under user security 
-#TOKEN - the MFA token 
+#!/bin/bash
+
+# Write MFA_ARN which is getting from IAM console under user security. (ex: "arn:aws:iam::1234567890:mfa/YOUR-IAM-MFA-ARN")
+MFA_ARN="<YOUR_MFA_ARN_FROM_IAM_USER>"
+PROFILE="default"
+AWS_STS_PROFILE="sts"
+AWS_STS_REGION="ap-northeast-2"
+
+arg1=$1
+if [ ! -z "$arg1" ]
+then
+  PROFILE="$arg1"
+fi
+
+echo "Usage: \n  mfa.sh \n  Or \n  mfa.sh <profile>"
+echo "\n\n"
+
+read -p 'Enter the MFA code : ' MFA_TOKEN
+
+CRED_DATA=$(aws sts get-session-token --duration-seconds 36000 --serial-number ${MFA_ARN} --token-code ${MFA_TOKEN} --profile ${PROFILE})
+
+AWS_ACCESS_KEY_ID=$(jq -r '.Credentials.AccessKeyId' <<< "${CRED_DATA}")
+AWS_SECRET_ACCESS_KEY=$(jq -r '.Credentials.SecretAccessKey' <<< "${CRED_DATA}")
+AWS_SESSION_TOKEN=$(jq -r '.Credentials.SessionToken' <<< "${CRED_DATA}")
+
+aws configure set region ${AWS_STS_REGION} --profile ${AWS_STS_PROFILE}
+aws configure set aws_access_key_id ${AWS_ACCESS_KEY_ID} --profile ${AWS_STS_PROFILE}
+aws configure set aws_secret_access_key ${AWS_SECRET_ACCESS_KEY} --profile ${AWS_STS_PROFILE}
+aws configure set aws_session_token ${AWS_SESSION_TOKEN} --profile ${AWS_STS_PROFILE}
 
 
-MFA_SERIAL=$1
-MFA_TOKEN=$2
-
-aws sts get-session-token --serial-number $MFA_SERIAL --token-code $MFA_TOKEN --region ap-northeast-2 --profile terra > myfile
-export AWS_ACCESS_KEY_ID=$(cat myfile | jq .Credentials.AccessKeyId |tr -d '"')
-export AWS_SECRET_ACCESS_KEY=$(cat myfile | jq .Credentials.SecretAccessKey  |tr -d '"')
-export AWS_SESSION_TOKEN=$(cat myfile | jq .Credentials.SessionToken  |tr -d '"' )
-
-echo "Usage: mfa.sh <MFA_SERIAL> <MFA_TOKEN>"
-echo "mfa.sh arn:aws:iam::1234567890:mfa/YOUR-IAM-ARN 123456"
+echo "### Check access to AWS with 'sts' profile"
+echo "aws sts get-caller-identity --profile sts"
 ```
+
+- 쉘 스크림트 내용 중 `MFA_ARN` 환경 변수를 본인의 MFA ARN 을 설정 하여야 합니다.
+
+
+만약 jq 프로그램이 설치되지 않았다면 설치 하도록 합니다.  
+- [JQ 웹사이트 참고](https://stedolan.github.io/jq/)
+
+```shell
+# for ubuntu 
+sudo apt-get install jq
+
+# for MacOS
+brew install jq
+```
+
 
 <br>
 
