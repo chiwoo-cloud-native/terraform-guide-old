@@ -12,7 +12,7 @@ then
   PROFILE="$arg1"
 fi
 
-echo "Usage: \n  mfa.sh \n  Or \n  mfa.sh <profile>"
+echo "Usage: \n  mfa.sh \n  Or \n  mfa.sh <profile> # if not default profile"
 echo "\n\n"
 
 read -p 'Enter the MFA code : ' MFA_TOKEN
