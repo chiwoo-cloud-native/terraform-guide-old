@@ -128,8 +128,10 @@ exit
 ```
 vi ~/.bashrc
 
+# .bashrc 파일 하단에 기입 하도록 합니다.
 export PATH="$PATH:$HOME/bin"
 
+# .bashrc 파일을 저장 하였다면 아래 명령을 통해 새로운 프로파일 적용 합니다. 
 source ~/.bashrc
 ```
 
