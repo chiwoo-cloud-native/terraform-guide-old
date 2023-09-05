@@ -22,9 +22,10 @@ Terraform / AWS CLI 를 설치 하고 AWS 클라우드를 프로비저닝 할 �
 <br>
 
 ## AWS CLI 설치 
-AWS CLI 설치하고 버전을 확인 합니다. 
+[AWS CLI 설치](https://docs.aws.amazon.com/ko_kr/cli/latest/userguide/getting-started-install.html) 가이드를 따라 최신 버전의 CLI 를 설치 하고 버전을 확인 합니다. 
 
 - AWS CLI 설치
+
 ```
 cd /tmp/
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
@@ -54,6 +55,7 @@ aws ec2 describe-vpcs --region ap-northeast-2 --query "Vpcs[].[ [Tags[?Key=='Nam
 
 - [mfa.sh](./mfa.sh) 쉘 파일 참고 
 ```shell
+cat <<'EOF' | > mfa.sh
 #!/bin/bash
 
 # Write MFA_ARN which is getting from IAM console under user security. (ex: "arn:aws:iam::1234567890:mfa/YOUR-IAM-MFA-ARN")
@@ -68,7 +70,7 @@ then
   PROFILE="$arg1"
 fi
 
-echo "Usage: \n  mfa.sh \n  Or \n  mfa.sh <profile>"
+echo "Usage: \n  mfa.sh \n  Or \n  mfa.sh <profile> # if not default profile"
 echo "\n\n"
 
 read -p 'Enter the MFA code : ' MFA_TOKEN
@@ -84,9 +86,10 @@ aws configure set aws_access_key_id ${AWS_ACCESS_KEY_ID} --profile ${AWS_STS_PRO
 aws configure set aws_secret_access_key ${AWS_SECRET_ACCESS_KEY} --profile ${AWS_STS_PROFILE}
 aws configure set aws_session_token ${AWS_SESSION_TOKEN} --profile ${AWS_STS_PROFILE}
 
-
 echo "### Check access to AWS with 'sts' profile"
 echo "aws sts get-caller-identity --profile sts"
+
+EOF
 ```
 
 - 쉘 스크림트 내용 중 `MFA_ARN` 환경 변수를 본인의 MFA ARN 을 설정 하여야 합니다.
@@ -112,7 +115,8 @@ brew install jq
 고객사마다 구성된 Terraform 프로젝트가 시기별로 다를 수 있고 이는 Terraform 버전이 다르다는 의미이기도 합니다.  
 이런 상황에 효과적으로 대응하기위해 패키지 매니저를 통해 원하는 버전의 Terraform을 결정하여 프로젝트를 생성할 수 있도록 합니다.  
 
-## tfswitch 패키지 매니저 설치 
+## [tfswitch](https://tfswitch.warrensbox.com/Install/) 패키지 매니저 설치 
+
 ```
 # root 사용자로 전환
 sudo su -
