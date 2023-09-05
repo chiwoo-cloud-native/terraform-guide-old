@@ -43,18 +43,12 @@ resource "aws_vpc" "my_vpc" {
 - update state - terraform 상태파일을 갱신 합니다.
 - N/A - 아무런 동작도 하지 않습니다.
 
-| Code (*.tf) | tfstate | REAL Infra | Operation | 
-|:-----------:|:-------:|:----------:|:---------:|
-|   aws_vpc   |    -    |     -      |  Answer1  |
-|   aws_vpc   | aws_vpc |     -      |  Answer2  |
-|   aws_vpc   | aws_vpc |  aws_vpc   |  Answer3  |
-|      -      | aws_vpc |  aws_vpc   |  Answer4  |
-|      -      |    -    |  aws_vpc   |  Answer5  |
-|      -      | aws_vpc |            |  Answer6  |
-
+| write code (*.tf) | tfstate | REAL Cloud Instance | Operation | 
+|:-----------------:|:-------:|:-------------------:|:---------:|
+|      aws_vpc      |    -    |          -          |  Answer1  |
+|      aws_vpc      | aws_vpc |          -          |  Answer2  |
+|      aws_vpc      | aws_vpc |       aws_vpc       |  Answer3  |
+|         -         | aws_vpc |       aws_vpc       |  Answer4  |
+|         -         |    -    |       aws_vpc       |  Answer5  |
+|         -         | aws_vpc |                     |  Answer6  |
  
-
-
-
-
-
