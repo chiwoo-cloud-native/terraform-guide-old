@@ -55,8 +55,8 @@ apple
 - 인터넷 사용자가 서비스를 제공 받을 수 있어야 합니다.
 - 서비스를 위한 컴퓨팅 자원은 외부 접속으로부터 안전하게 보호되어야 합니다.
 
-**[aws_vpc 리소스 참조](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/vpc)**     
-**[CIDR 계산기 참고](https://cidr.xyz/)**
+**[aws_vpc 리소스](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/vpc)**     
+**[CIDR 계산기](https://www.ipaddressguide.com/cidr)**
 
 <br>
 
