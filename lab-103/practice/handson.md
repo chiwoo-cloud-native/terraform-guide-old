@@ -16,17 +16,17 @@
 
 ## Q5. terraform 명령을 통해 plan, apply, destroy 를 확인 하세요.
 
-- terraform 코드를 작성 하세요.  
-- AWS 프로바이더에서 제공하는 리소스로 유형은 제한이 없습니다.   
+- terraform 코드를 작성 하세요.
+- AWS 프로바이더에서 제공하는 리소스로 유형은 제한이 없습니다.
 - terraform plan, apply, destroy 를 확인 하세요.
 
 <br>
 
 ## Q6. terraform 상태 파일 Quiz
 
-다음과 같이 terraform 코드로 aws_vpc 리소스를 정의 하고 terraform apply 를 통해 프로비저닝 한다고 가정할때 Operation 은 어떻게 될까요?
+aws_vpc 리소스를 정의하는 terraform 코드를 아래와 같이 작성 하였습니다.
 
-```
+```hcl
 resource "aws_vpc" "my_vpc" {
   cidr_block = "172.16.0.0/16"
 
@@ -36,17 +36,22 @@ resource "aws_vpc" "my_vpc" {
 }
 ```
 
-| Code (*.tf) | tfstate | REAL Infra |  Operation  | 
-|:-----------:|:-------:|:----------:|:-----------:|
-|   aws_vpc   |    -    |     -      | &lt;QA1&gt; |
-|   aws_vpc   | aws_vpc |     -      | &lt;QA2&gt; |
-|   aws_vpc   | aws_vpc |  aws_vpc   | &lt;QA3&gt; |
-|      -      | aws_vpc |  aws_vpc   | &lt;QA4&gt; |
-|      -      |    -    |  aws_vpc   | &lt;QA5&gt; |
-|      -      | aws_vpc |            | &lt;QA6&gt; |
+`terraform apply` 명령을 실행 한다고 가정하면 어떤 Operation 이 적용 될까요?
 
+- create - REAL 클라우드 인스턴스를 생성 합니다.
+- delete - REAL 클라우드 인스턴스를 삭제 합니다.
+- update state - terraform 상태파일을 갱신 합니다.
+- N/A - 아무런 동작도 하지 않습니다.
 
-올 수 있는 Operation 은 create REAL, delete REAL, update state, '-' 입니다.  
+| Code (*.tf) | tfstate | REAL Infra | Operation | 
+|:-----------:|:-------:|:----------:|:---------:|
+|   aws_vpc   |    -    |     -      |  Answer1  |
+|   aws_vpc   | aws_vpc |     -      |  Answer2  |
+|   aws_vpc   | aws_vpc |  aws_vpc   |  Answer3  |
+|      -      | aws_vpc |  aws_vpc   |  Answer4  |
+|      -      |    -    |  aws_vpc   |  Answer5  |
+|      -      | aws_vpc |            |  Answer6  |
+
  
 
 
