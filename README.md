@@ -68,6 +68,8 @@ Code 를 직접 구현 하며 Terraform 의 실제 동작을 이해하고 주어
 [Terraform 설치](./lab-101/guide.md)
 [CloudFormation](./lab-101/cloudformation.md)
 
+[CloudFormation](./lab-101/cloudformation.md)
+
 <br>
 
 ## Lab 102: Terraform Basic
